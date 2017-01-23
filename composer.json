@@ -4,13 +4,18 @@
     "type": "project",
     "require": {
         "roave/security-advisories": "dev-master",
-        "react/http": "0.4.*",
-        "silex/silex": "^2.0"
+        "applyit/app-server": "dev-master"
     },
     "authors": [
         {
             "name": "Dmitry Taviev",
             "email": "dmitry.taviev@applyit.lv"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:apply/php-app-server.git"
         }
     ]
 }
