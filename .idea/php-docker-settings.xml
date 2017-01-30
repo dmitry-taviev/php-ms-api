@@ -22,6 +22,11 @@
                     <option name="containerPath" value="/opt/project" />
                     <option name="hostPath" value="$PROJECT_DIR$" />
                   </DockerVolumeBindingImpl>
+                  <DockerVolumeBindingImpl>
+                    <option name="containerPath" value="/usr/local/etc/php/conf.d/php.ini" />
+                    <option name="hostPath" value="$PROJECT_DIR$/php.ini" />
+                    <option name="readOnly" value="true" />
+                  </DockerVolumeBindingImpl>
                 </list>
               </option>
             </DockerContainerSettings>

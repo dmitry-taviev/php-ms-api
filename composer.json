@@ -1,10 +1,10 @@
 {
-    "name": "applyit/untitled1",
+    "name": "applyit/api-example",
     "license": "proprietary",
     "type": "project",
     "require": {
         "roave/security-advisories": "dev-master",
-        "applyit/app-server": "dev-master"
+        "applyit/app-server": "v1.0.*"
     },
     "authors": [
         {
@@ -17,5 +17,10 @@
             "type": "vcs",
             "url": "git@bitbucket.org:apply/php-app-server.git"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-0": {
+            "Example": "src"
+        }
+    }
 }
