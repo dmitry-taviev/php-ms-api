@@ -4,7 +4,7 @@
     "type": "project",
     "require": {
         "roave/security-advisories": "dev-master",
-        "applyit/app-server": "v1.0.*"
+        "applyit/app-server": "v1.*"
     },
     "authors": [
         {

@@ -21,6 +21,11 @@ class NativeArrayRepository implements Repository
      */
     protected $persons = [];
 
+    public function __construct()
+    {
+        $this->persons[] = new Person('test');
+    }
+
     /**
      * @inheritdoc
      */

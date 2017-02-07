@@ -11,8 +11,9 @@ declare(strict_types=1);
 namespace Example\PersonRegistry;
 
 
+use AppServer\Encoder\EncoderFactory;
 use Example\PersonRegistry\PersonRepository\Repository;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class Controller
 {
@@ -22,24 +23,24 @@ class Controller
      */
     protected $repository;
 
-    public function __construct(Repository $repository)
+    /**
+     * @var EncoderFactory
+     */
+    protected $encoderFactory;
+
+    public function __construct(Repository $repository, EncoderFactory $encoderFactory)
     {
         $this->repository = $repository;
+        $this->encoderFactory = $encoderFactory;
     }
 
-    public function allPersons(): JsonResponse
+    public function allPersons(): Response
     {
-        return new JsonResponse(
-            array_map(
-                function(Person $person) {
-                    return [
-                        'id' => $person->id(),
-                        'name' => $person->name()
-                    ];
-                },
-                $this->repository->all()
-            )
-        );
+        return $this->encoderFactory
+            ->encoder([
+                Person::class => PersonSchema::class
+            ])
+            ->response($this->repository->all());
     }
 
 }

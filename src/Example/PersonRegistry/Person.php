@@ -14,22 +14,22 @@ namespace Example\PersonRegistry;
 class Person
 {
 
-    protected $id = 0;
+    protected $id = '';
 
     protected $name = '';
 
     public function __construct(string $name)
     {
-        $this->id = uniqid('example.person', true);
+        $this->id = uniqid('example.persons.', true);
         $this->name = $name;
     }
 
-    public function id()
+    public function id(): string
     {
         return $this->id;
     }
 
-    public function name()
+    public function name(): string
     {
         return $this->name;
     }

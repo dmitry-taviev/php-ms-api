@@ -13,6 +13,7 @@ namespace Example\PersonRegistry;
 
 use AppServer\ApplicationComponent;
 use Example\PersonRegistry\PersonRepository\NativeArrayRepository;
+use Example\PersonRegistry\PersonRepository\Repository;
 use Pimple\Container;
 use Silex\Application;
 use Silex\ControllerCollection;
@@ -22,11 +23,14 @@ class Component extends ApplicationComponent
 
     protected function registerServices(Container $container): void
     {
-        $container['persons.repository'] = function() {
+        $container['persons.repository'] = function(): Repository {
             return new NativeArrayRepository();
         };
-        $container['persons.controller'] = function() use ($container) {
-            return new Controller($container['persons.repository']);
+        $container['persons.controller'] = function(Container $container): Controller {
+            return new Controller(
+                $container['persons.repository'],
+                $container['encoder.factory']
+            );
         };
     }
 
